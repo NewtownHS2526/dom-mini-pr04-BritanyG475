@@ -1,39 +1,59 @@
 console.log("Script Running");
 
-// Create a helper function that moves a penguin across the grid
-// The function should accept a penguin element and a column position
-// Only allow movement while the column is less than or equal to 6
+
+function movePeguin (penguin, position) {
+    if (position <= 6) {
+        penguin.style.gridColumn = position;
+    }
+}
+
+let tuxPosition = 1;
+let daisyPosition = 1;
+let rockPosition = 1;
 
 
+const tuxButton = document.querySelector("#tux-button");
+const daisyButton = document.querySelector("#daisy-button");
+const rockButton = document.querySelector("#rock-button");
 
-// Create position variables for each penguin and set them all to 1
+const tuxPenguin = document.querySelector("#tux-penguin");
+const daisyPenguin = document.qeuerySelector("#daisy-penguin");
+const rockPenguin + document.querySelector("#rocky-Penguin");
 
-
-
-// Query selectors for all buttons and penguins go here
-
-
-
-// Write the function that moves Tux forward
-// Increase the tux position
-// Call the helper function to update the penguin position
-// Call the winner check function
+const winnerDisplay = document.querySelector("#winner");
 
 
-
-// Write the function that moves Daisy forward
-
-
-
-// Write the function that moves Rocky forward
-
+function moveTux( ) {
+    tuxPosition++;
+    movePenguin(tuxPenguin, tuxPosition);
+    checkWinner("Tux", tuxPosition);
+}
 
 
-// Write a function that checks if a penguin reached column 6
-// If so, display the winner message (example: "Tux got the fish! 🐟")
-// Disable all buttons when a winner is found
+function moveDaisy() {
+    daisyPosition++;
+    movePenguin(daisyPenguin, daisyPosition);
+    checkWinner("Daisy", daisyPosition);
+}
 
 
+function moveRocky() {
+    rockyPosition++;
+    moveRocky(rockyPenguin, rockyPosition);
+    checkWinner("Rocky", rockyPosition);
+}
 
-// Add event listeners for each button
-// Each button should trigger its own movement function
+
+function checkWInner(name, position) {
+    if (position >= 6) {
+        winnerDisplay.textContent = name + "got the fish! 🐟";
+        tuxButton.disabled = true;
+        daisyButton.disabled = true;
+        rockyButton.disbaled = true;
+    }
+}
+
+
+tuxButton.addEventListener("click", moveTux);
+daisyButton.addEventListener("click", moveDaisy);
+rockyButton.addEventListener("click", moveRocky);
